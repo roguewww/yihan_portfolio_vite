@@ -41,7 +41,7 @@
         <!-- 新组件 -->
         <div for="colorPicker" class="button" title="Select Color"style="border: 1px solid black; display: inline-block;">
           Select Color
-          <input type="color" v-model="customPenColor">
+            <input type="color" v-model="customPenColor">
         </div>
         <div class="pen-thickness">
           <input type="range" min="1" max="50" v-model="penThickness">
@@ -176,6 +176,7 @@ export default {
     },
 
     useCustomPen() {
+      this.showImage = false;
       this.penColor = this.customPenColor;
     },
 
