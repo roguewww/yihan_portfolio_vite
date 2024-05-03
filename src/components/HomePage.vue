@@ -6,12 +6,12 @@
       <button v-for="(url, key) in images" :key="key" 
               @mouseenter="handleHover(key)" 
               @mouseout="clearImage"
-              style="position:absolute ; width: 50px; height: 50px;"
+              style="position:absolute ; width: 75px; height: 75px;"
               :style="{left: `${getPositionFromKey(key).x}px`, top: `${getPositionFromKey(key).y}px`}">
         Hover Me
       </button>
       <div v-if="imageUrl" :style="{size:'10', position: 'absolute', left: `${xPos}px`, top: `${yPos}px`}">
-        <img style="size:100% , position:absolute" :src="imageUrl"/>
+        <img style="size:100%; position:absolute; pointer-events: none" :src="imageUrl"/>
         <!-- <div style="position: relative; bottom: 0; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 2px 5px;"> -->
         <!-- X: {{ xPos }}, Y: {{ yPos }} -->
         <!-- </div> -->
@@ -65,6 +65,7 @@ export default {
     },
 
     handleHover(key) {
+    console.log('mouseover triggered')
     if (!this.imageUrl) {  // Check if the new URL is different from the current one
       this.imageLoaded = false;  // Reset loading state only if the image is going to change
       this.imageUrl = this.images[key];  // Update the image URL
@@ -80,9 +81,8 @@ export default {
     },
 
     clearImage() {
-      setTimeout(() => {
-        this.imageUrl = null;
-      }, 200);
+      console.log('mouseleave triggered');
+      this.imageUrl = null;
     },
 
     getPositon(event) {
@@ -98,4 +98,7 @@ export default {
 
 
 <style scoped>
+.button {
+  padding: 20px; /* Applies 10 pixels of padding on all sides */
+}
 </style>
