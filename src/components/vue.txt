@@ -10,7 +10,7 @@
               :style="{left: `${getPositionFromKey(key).x}px`, top: `${getPositionFromKey(key).y}px`}">
         Hover Me
       </button>
-      <div v-show="imageUrl" :style="{size:'10', position: 'absolute', left: `${xPos}px`, top: `${yPos}px`}">
+      <div v-if="imageUrl" :style="{size:'10', position: 'absolute', left: `${xPos}px`, top: `${yPos}px`}">
         <img style="size:100%; position:absolute; pointer-events: none" :src="imageUrl"/>
         <!-- <div style="position: relative; bottom: 0; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 2px 5px;"> -->
         <!-- X: {{ xPos }}, Y: {{ yPos }} -->
