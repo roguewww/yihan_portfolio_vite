@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Simple Drawing App</h1>
-    <button @click="backhome">Back to home</button>
+    <button class='button' @click="backhome">Back to home</button>
     <p>X-pos: {{ x_Pos }}</p>
     <p>Y-pos: {{ y_Pos }}</p>
     <div class="canvas-container" @mousemove="moveEraser" @mouseleave="hideEraser">
@@ -43,13 +43,16 @@
           Select Color
             <input type="color" v-model="customPenColor">
         </div>
+
         <div class="pen-thickness">
           <input type="range" min="1" max="50" v-model="penThickness">
-          <span>Pen/Eraser Thickness: {{ penThickness }}</span>
+          <span style='padding:10'>Pen/Eraser Thickness: {{ penThickness }}</span>
         </div>
+
         <div>
           <button @click="useCustomPen" class="button purple" title="Use Custom Pen">Save Custom Pen Pattern</button>
         </div>
+
         <div>
           <button class='button'
             :class="{ 'eraser-active': isEraserActive }"
