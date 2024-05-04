@@ -38,7 +38,7 @@
     </div>
     <div>
       <div class="section-79">
-        <a href="/projects/project3" class="link-block-9 w-inline-block">
+        <a @click="{this.$router.push('/lights');}" class="link-block-9 w-inline-block">
           <img
             src="https://assets-global.website-files.com/617eca303ba6a0d1598e1553/62756ebc6e303f8ef4bf0451_Rectangle%20109.png"
             loading="lazy"
@@ -159,11 +159,9 @@ export default {
     onUnmounted(() => {
       window.removeEventListener('scroll', checkScroll);
     });
-
     return { isSticky, scrollX };
   },
 };
-
 </script>
   
 <style scoped>
