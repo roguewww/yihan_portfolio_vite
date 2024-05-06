@@ -10,11 +10,11 @@
           :key="key"
           @mouseenter="handleHover(key)"
           @mouseout="clearImage"
+          :class="getButtonAnimationClass(key)"
           :style="{
             position: 'absolute',
             left: `${getPositionFromKey(key).x}px`,
             top: `${getPositionFromKey(key).y}px`,
-            animationDelay: `${getRandomDelay()}s`
           }"
         ></button>
 
@@ -22,8 +22,8 @@
           class="imgContainer"
           v-show="imageUrl"
           :style="{
-            width: '150px', // Set the width of the container
-            height: '150px', // Set the height of the container
+            width: '300px', // 修改图片宽度
+            height: '300px', // 修改图片高度
             backgroundImage: `url('/images/pic_bg.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -59,6 +59,7 @@ export default {
       loading: true,
       imageWidth: 0,
       imageHeight: 0,
+      hoveredKey: null,
     };
   },
   created() {
@@ -98,14 +99,14 @@ export default {
         const position = this.getPositionFromKey(key);
         this.xPos = position.x;
         this.yPos = position.y;
+        this.hoveredKey = key;
       }
     },
 
     getPositionFromKey(key) {
-  const parts = key.split("-");
-  return { x: parseInt(parts[0], 10), y: parseInt(parts[1], 10) };
-},
-
+      const parts = key.split("-");
+      return { x: parseInt(parts[0], 10), y: parseInt(parts[1], 10) };
+    },
 
     clearImage() {
       console.log("mouseleave triggered");
@@ -123,12 +124,18 @@ export default {
     getRandomDelay() {
       return Math.random() * 2;
     },
+
+    getButtonAnimationClass(key) {
+      return {
+        'blinking': true,
+        'no-blink': key === this.hoveredKey,
+      };
+    },
   },
 };
 </script>
 
 <style scoped>
-
 .bg {
   display: flex;
   background-image: url("/images/bg_map.svg");
@@ -166,7 +173,14 @@ export default {
   justify-content: center;
   border: 3px solid #ff89f4;
   box-shadow: 0px 0px 5px rgba(255, 0, 230, 0.99);
+}
+
+.blinking {
   animation: blink 2s linear infinite;
+}
+
+.no-blink {
+  animation: none;
 }
 
 @keyframes blink {
