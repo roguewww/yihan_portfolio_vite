@@ -2,12 +2,7 @@
   <div id="HomePage" class="bg">
     <div>
       <div v-if="loading">Loading images, please wait...</div>
-      <div
-        class="mapContainer"
-        v-else
-        @click="getPositon"
-        style="position: relative;"
-      >
+      <div class="mapContainer" v-else @click="getPositon">
         <img class="map" src="/images/map.svg" alt="Description of image" />
         <button
           class="mapButton"
@@ -24,16 +19,21 @@
         ></button>
 
         <div
+          class="imgContainer"
           v-show="imageUrl"
           :style="{
-            size: '10',
+            width: '150px', // Set the width of the container
+            height: '150px', // Set the height of the container
+            backgroundImage: `url('/images/pic_bg.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
             position: 'absolute',
             left: `${xPos}px`,
-            top: `${yPos}px`
+            top: `${yPos}px`,
           }"
         >
           <img
-            style="size: 100%; position: absolute; pointer-events: none"
+            style="width: 100%; position: absolute; pointer-events: none"
             :src="imageUrl"
           />
         </div>
@@ -102,9 +102,10 @@ export default {
     },
 
     getPositionFromKey(key) {
-      const parts = key.split("-");
-      return { x: parseInt(parts[0]), y: parseInt(parts[1]) };
-    },
+  const parts = key.split("-");
+  return { x: parseInt(parts[0], 10), y: parseInt(parts[1], 10) };
+},
+
 
     clearImage() {
       console.log("mouseleave triggered");
@@ -127,6 +128,7 @@ export default {
 </script>
 
 <style scoped>
+
 .bg {
   display: flex;
   background-image: url("/images/bg_map.svg");
@@ -143,15 +145,21 @@ export default {
   margin-top: 15vh;
 }
 
+.imgContainer {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .map {
   width: 60vw;
 }
 
 .mapButton {
-  background-color: #fb32e7;
+  background-color: #ffffff;
   border-radius: 50%;
-  width: 13px;
-  height: 13px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   padding: 0;
