@@ -4,7 +4,7 @@
       <div v-if="loading">Loading images, please wait...</div>
       <div class="mapContainer" v-else @click="getPositon">
         <img class="map" src="/images/map.svg" alt="Description of image" />
-        <a
+        <div
           class="mapButton"
           v-for="(url, key) in images"
           :key="key"
@@ -16,7 +16,7 @@
             left: `${getPositionFromKey(key).x}px`,
             top: `${getPositionFromKey(key).y}px`,
           }"
-        ></a>>
+        ></div>>
         <div
           class="imgContainer"
           v-show="imageUrl"
@@ -101,9 +101,8 @@ export default {
     handleHover(key) {
       console.log("mouseover triggered");
       if (!this.imageUrl) {
-        // Check if the new URL is different from the current one
-        this.imageLoaded = false; // Reset loading state only if the image is going to change
-        this.imageUrl = this.images[key]; // Update the image URL
+        this.imageLoaded = false; 
+        this.imageUrl = this.images[key]; 
         const position = this.getPositionFromKey(key);
         this.xPos = position.x;
         this.yPos = position.y;
@@ -184,6 +183,8 @@ export default {
   justify-content: center;
   border: 3px solid #ff89f4;
   box-shadow: 0px 0px 5px rgba(255, 0, 230, 0.99);
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .blinking {
