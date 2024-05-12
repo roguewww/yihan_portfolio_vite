@@ -16,8 +16,7 @@
             left: `${getPositionFromKey(key).x}px`,
             top: `${getPositionFromKey(key).y}px`,
           }"
-        ></button>
-
+        ></button>>
         <div
           class="imgContainer"
           v-show="imageUrl"
@@ -39,16 +38,20 @@
         </div>
       </div>
     </div>
-    <router-view></router-view>
+  </div>
+  <div v-if=show_drawpage class="draw-page-overlay">
+    <DrawPage :x_Pos=xPos :y_Pos=yPos style="background-color: transparent;"></DrawPage>
   </div>
 </template>
 
 <script>
 import storage from "../firebase";
+import DrawPage from './DrawPage.vue'
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 
 export default {
   name: "HomePage",
+	components: { DrawPage },
   data() {
     return {
       images: {},
@@ -60,10 +63,12 @@ export default {
       imageWidth: 0,
       imageHeight: 0,
       hoveredKey: null,
+      show_drawpage: false,
     };
   },
   created() {
     this.fetchImages();
+    this.show_drawpage = false;
   },
   methods: {
     fetchImages() {
@@ -118,7 +123,8 @@ export default {
 
       const x_Pos = event.offsetX;
       const y_Pos = event.offsetY;
-      this.$router.push({ name: "Draw", params: { x_Pos, y_Pos } });
+      // this.$router.push({ name: "Draw", params: { x_Pos, y_Pos } });
+      this.show_drawpage = true;
     },
 
     getRandomDelay() {
@@ -188,4 +194,19 @@ export default {
     opacity: 0;
   }
 }
+
+.draw-page-overlay {
+  position: fixed; /* or 'absolute' if only within a specific parent */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust color and opacity as needed */
+  z-index: 1000; /* Ensure it's on top of other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 </style>

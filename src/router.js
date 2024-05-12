@@ -4,6 +4,7 @@ import DrawPage from './components/DrawPage.vue';
 import Test from './components/TestPage.vue';
 import RealRogue from './components/RealRogue.vue';
 import LightsPage from './components/lights.vue';
+import Rehome from './components/homepage2.vue';
 
 
 // 这边需要修改背景色，因为一些很奇葩的问题 LightsPage 需要一个单独的 Style
@@ -13,6 +14,7 @@ const routes = [
   { path: '/test', name: 'Test', component: Test},
   { path: '/rogue', name: 'realrogue', component: RealRogue, meta: { bodyStyle: { backgroundColor: '#FFFFFF' } },},
   { path: '/lights', name: 'lights', component: LightsPage, meta: { bodyStyle: { backgroundColor: '#233048' } },},
+  { path: '/hometoo', name: 'home_re', component: Rehome, meta: { bodyStyle: { backgroundColor: '#000000' } },},
 ];
 
 const router = createRouter({
