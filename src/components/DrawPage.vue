@@ -32,7 +32,7 @@
               <input type="range" min="1" max="50" v-model="penThickness">
               <span style='padding:10'>Pen/Eraser Thickness: {{ penThickness }}</span>
             </div>
-  
+
             <div>
               <button @click="useCustomPen" class="button purple" title="Use Custom Pen">Save Custom Pen Pattern</button>
             </div>
@@ -78,7 +78,6 @@
               
     </canvas>
       </div>
-      
 
     <div class="button-container" style="padding-top: 10%;" >
           <button @click="ClearCanva" class="button blue" style="border: none; background-color: transparent; color: black; text-align: left;" >
@@ -106,6 +105,7 @@ import { toggleSelectionMixin } from '../mixins';
 export default {
   name:'DrawPage',
   props:['x_Pos','y_Pos'],
+  emits: ['close-draw-page'],
   mixins: [toggleSelectionMixin],
   data() {
     return {
@@ -143,7 +143,7 @@ export default {
   },
   methods: {
     backhome(){
-      this.$router.back();
+      this.$emit('close-draw-page');
     },
     showPens(){
       this.isPenActive = !this.isPenActive;

@@ -40,7 +40,7 @@
     </div>
   </div>
   <div v-if=show_drawpage class="draw-page-overlay">
-    <DrawPage :x_Pos=xPos :y_Pos=yPos style="background-color: transparent;"></DrawPage>
+    <DrawPage :x_Pos=xPos :y_Pos=yPos style="background-color: transparent;" @close-draw-page="handleCloseDrawPage"></DrawPage>
   </div>
 </template>
 
@@ -71,6 +71,9 @@ export default {
     this.show_drawpage = false;
   },
   methods: {
+    handleCloseDrawPage(){
+      this.show_drawpage = false;
+    },
     fetchImages() {
       const imagesRef = ref(storage, "images");
       listAll(imagesRef)
