@@ -21,16 +21,13 @@
             <button class = "colorButtons" :class="{ 'colorButtons-selected': isSelected[3] }"@click="changeColor('#13AE5C',3)" style ="background-color:#13AE5C;"></button>
             <button class = "colorButtons" :class="{ 'colorButtons-selected': isSelected[4] }"@click="changeColor('#0B99FF',4)" style ="background-color:#0B99FF;"></button>
             <button class = "colorButtons" :class="{ 'colorButtons-selected': isSelected[5] }"@click="changeColor('#9746FF',5)" style ="background-color:#9746FF;"></button>
-            <button for="colorPicker" class = "colorButtons" style="border: none; position:relative; background-color:transparent; width:25px; height:25px;" @click="openColorPicker" >
-              <img src="/images/color-wheel.svg" alt="Button Image" style="width: 100%; height: auto; " >
-              <input type="color" v-model="customPenColor" style="display: none">
-            </button> -->
-
-            <div>
-              <!-- <button @click="showColorPicker">Choose Color</button> -->
-              <input class="custom-color-picker" v-model="selectedColor" type="color" @input="setColor" >
+            
+            
+            <div class="colorButtons" style="position: relative; width: 25px; height: 25px;">
+              <input type="color" v-model="customPenColor" @click="openColorPicker" 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer;">
+              <img src="/images/color-wheel.svg" alt="Button Image" style="position: absolute; top: 0; left: 0; width: 100%; height: auto; pointer-events: none;">
             </div>
-
             <div class="pen-thickness">
               <input type="range" min="1" max="50" v-model="penThickness">
               <span style='padding:10'>Pen/Eraser Thickness: {{ penThickness }}</span>
@@ -295,8 +292,8 @@ export default {
   margin-top: 5px;
   padding:0px 0px;
   display: inline-block;
-  backgroundImage: `url('/images/color-wheel.svg')`;
-  border: none;
+  background-Image: url('/images/color-wheel.svg');
+  border:none;
 }
 .button {
   /* padding: 10px 20px; */
@@ -381,4 +378,6 @@ export default {
   background-repeat:no-repeat;
   background-size:contain;
 }
+
+
 </style>

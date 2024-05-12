@@ -16,7 +16,7 @@
             left: `${getPositionFromKey(key).x}px`,
             top: `${getPositionFromKey(key).y}px`,
           }"
-        ></button>>
+        ></a>>
         <div
           class="imgContainer"
           v-show="imageUrl"
