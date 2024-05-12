@@ -159,6 +159,8 @@ export default {
   position: relative;
   transform: translate(50%, 0%);
   margin-top: 15vh;
+  border-color: tomato;
+  border-style: solid;
 }
 
 .imgContainer {
