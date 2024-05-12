@@ -11,6 +11,7 @@ node_modules
 dist
 python_helper
 dist-ssr
+martine_rose
 *.local
 
 # Editor directories and files

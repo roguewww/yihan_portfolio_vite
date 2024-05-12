@@ -4,7 +4,7 @@
       <div v-if="loading">Loading images, please wait...</div>
       <div class="mapContainer" v-else @click="getPositon">
         <img class="map" src="/images/map.svg" alt="Description of image" />
-        <button
+        <a
           class="mapButton"
           v-for="(url, key) in images"
           :key="key"
@@ -16,7 +16,7 @@
             left: `${getPositionFromKey(key).x}px`,
             top: `${getPositionFromKey(key).y}px`,
           }"
-        ></button>
+        ></a>
 
         <div
           class="imgContainer"
@@ -165,8 +165,8 @@ export default {
 .mapButton {
   background-color: #ffffff;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 14px;
+  height: 14px;
   display: flex;
   align-items: center;
   padding: 0;
