@@ -1,13 +1,24 @@
 <template>
-  <div id="HomePage" class="bg">
-    <div>
-      <div v-if="loading">Loading images, please wait...</div>
+  <div id="HomePage" class="bg" style="font-family: 'Futura';">
+    <div style="display:flex; flex-direction: row; margin:50px; position: relative;">
+      <div class="icon" style="display:flex; flex-direction: row; position:fixed;" >
+        <img src="/images/mapicon.svg" alt="Description of image" style="width: 50px; height: 50px; margin-right: 20px; white-space: nowrap; ">
+        <p style="font-size: 1rem; color: white; font-family: 'Futura';"> Rogue& Kano </p>
+      </div>
+      <div class="introDiv" style="height:100vh; width:500px; border: white; position: relative; z-index: 100;">
+        <div class="introText" style="font-family: 'Futura'; color: white; position: absolute; bottom: 30%;">
+          <h1 class="introHeading" style="font-size: 3.5rem;" >Memorial Map</h1>
+          <p style="font-size: 1rem;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute </p>
+      
+        </div>
+        </div>
+      <div v-if="loading" style="color:white;">Loading images, please wait...</div>
       <div class="mapContainer" v-else @click="getPositon">
         <img class="map" src="/images/map.svg" alt="Description of image" />
         <div
           class="c-map_dot"
           v-for="(url, key) in images"
-          :key="key"
+          :key="key"œ
           @mouseenter="handleHover(key)"
           @mouseleave="clearImage"
           :style="{ 
@@ -15,9 +26,11 @@
             top: `${getPositionFromKey(key).y}px`,
           }"
         >
-          <p class="c-map_location" :style="{ display: hoveredKey === key ? 'block' : 'none' }">{{ key }}</p>
-          <div class="c-map_circle">
-            <div class="c-map_fill"></div>
+          <!-- <p class="c-map_location" :style="{ display: hoveredKey === key ? 'block' : 'none' }">{{ key }}</p> -->
+          <div class="c-map_circle" :style="{ opacity: opacity }">
+            <div class="c-map_fill"
+            @mouseenter="opacity = 0.5" 
+            @mouseleave="opacity = 1"></div>
           </div>
         </div>
         <div
@@ -64,6 +77,7 @@ export default {
       imageHeight: 0,
       hoveredKey: null,
       show_drawpage: false,
+      opacity: 1,
     };
   },
   created() {
@@ -134,14 +148,13 @@ export default {
   background-position: center;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 .mapContainer {
   position: relative;
-  transform: translate(50%, 0%);
+  /* transform: translate(50%, 0%); */
   margin-top: 15vh;
-  border-color: tomato;
-  border-style: solid;
 }
 
 .imgContainer {
@@ -155,7 +168,7 @@ export default {
 }
 
 .c-map_dot {
-  background-color: #ffffff;
+  background:transparent;
   border-radius: 50%;
   width: 14px;
   height: 14px;
@@ -163,40 +176,34 @@ export default {
   align-items: center;
   padding: 0;
   justify-content: center;
-  border: 3px solid #ff89f4;
-  box-shadow: 0px 0px 5px rgba(255, 0, 230, 0.99);
+  /* border: 3px solid #ff89f4; */
   pointer-events: auto;
   cursor: pointer;
   position: absolute;
   transform: translate(-50%, -50%);
 }
 
-.c-map_location {
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  transform: translate(-50%, -10px);
-  background: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: none; /* Initial state; toggled by Vue */
-}
 
 .c-map_circle {
-  width: 24px;
-  height: 24px;
+  width: 15px;
+  height: 15px;
+  border:none;
   border-radius: 50%;
-  background: white;
+  background:none;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
 }
 
 .c-map_fill {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: red;
+  border:none;
+  background: rgba(255, 93, 239, 0.99);
+  box-shadow: 0px 0px 7px rgba(255, 93, 239, 0.99);
 }
 
 .draw-page-overlay {

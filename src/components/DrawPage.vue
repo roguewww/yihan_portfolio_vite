@@ -208,7 +208,7 @@ export default {
       }).catch((error) => {
         console.error('Upload failed:', error);
       });
-
+      this.backhome();
       // this.ctx.clearRect(0, 0, this.$refs.canvas.width, this.$refs.canvas.height);
     },
 
