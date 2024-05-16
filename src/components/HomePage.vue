@@ -27,10 +27,10 @@
           }"
         >
           <!-- <p class="c-map_location" :style="{ display: hoveredKey === key ? 'block' : 'none' }">{{ key }}</p> -->
-          <div class="c-map_circle" :style="{ opacity: opacity }">
-            <div class="c-map_fill"
-            @mouseenter="opacity = 0.5" 
-            @mouseleave="opacity = 1"></div>
+          <div class="c-map_circle">
+            <div class="c-map_fill":style="{ opacity: hoveredKey === key ? 0.5 : 1 }"
+           
+            </div> 
           </div>
         </div>
         <div
@@ -164,7 +164,7 @@ export default {
 }
 
 .map {
-  width: 60vw;
+  width: 50vw;
 }
 
 .c-map_dot {
@@ -204,6 +204,7 @@ export default {
   border:none;
   background: rgba(255, 93, 239, 0.99);
   box-shadow: 0px 0px 7px rgba(255, 93, 239, 0.99);
+  transition: opacity 0.s ease;
 }
 
 .draw-page-overlay {

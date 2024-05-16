@@ -80,11 +80,11 @@
       </div>
 
     <div class="button-container" style="padding-top: 10%;" >
-          <button @click="ClearCanva" class="button blue" style="border: none; background-color: transparent; color: black; text-align: left;" >
+          <button @click="ClearCanva" class="button blue" style="border: none; background-color: transparent; color: white; text-align: left;" >
             Clear
           </button>
 
-          <button @click="saveDrawing(x_Pos,y_Pos)" class="button" style="border: none; background-color: transparent; color: black; text-align: left;">
+          <button @click="saveDrawing(x_Pos,y_Pos)" class="button" style="border: none; background-color: transparent; color: white; text-align: left;">
             Save Drawing
           </button>
     </div>
