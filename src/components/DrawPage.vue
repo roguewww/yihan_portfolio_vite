@@ -143,7 +143,7 @@ export default {
   },
   methods: {
     backhome(){
-      this.$router.back();
+      this.$router.push('/');
     },
     showPens(){
       this.isPenActive = !this.isPenActive;

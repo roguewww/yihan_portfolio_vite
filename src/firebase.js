@@ -2,14 +2,15 @@ import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBXf5w8dx8SqxgeQHx36_lqB0DWIIdsQr4",
-    authDomain: "drawing-f0507.firebaseapp.com",
-    projectId: "drawing-f0507",
-    storageBucket: "drawing-f0507.appspot.com",
-    messagingSenderId: "456342717411",
-    appId: "1:456342717411:web:4f12e5a5d39da05e6e96d6",
-    measurementId: "G-4ZPHQT0SET"
-    };
+    apiKey: "AIzaSyAXhL-JIiKyTnSnZEBiLugoTZYp5QXzAqk",
+    authDomain: "new-york-587e5.firebaseapp.com",
+    databaseURL: "https://new-york-587e5-default-rtdb.firebaseio.com",
+    projectId: "new-york-587e5",
+    storageBucket: "new-york-587e5.appspot.com",
+    messagingSenderId: "234738250444",
+    appId: "1:234738250444:web:a8ae713fdcb843ef118869",
+    measurementId: "G-68TNBTCWBY"
+  };
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
